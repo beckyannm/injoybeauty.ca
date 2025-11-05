@@ -37,7 +37,7 @@ header {
 .top-bar {
   display: flex;
   flex-wrap: wrap;
-  gap: 1.5rem;
+  gap: 1.0rem;
   align-items: center;
   justify-content: space-between;
   /* background removed so header's white covers full width */
