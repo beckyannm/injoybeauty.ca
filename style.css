@@ -29,7 +29,11 @@ body {
    Option A (recommended): put the white background on <header>
    — makes the white bar span the entire screen edge-to-edge. */
 header {
-  background: #fff;         /* full-width white bar */
+  header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;}
+  background: #fff;        
   padding: 2rem 5vw 1.5rem; /* keep your spacing */
 }
 
@@ -59,8 +63,8 @@ header {
 
 /* Logo block */
 .logo-box {
-  width: clamp(220px, 22vw, 320px);
-  padding: 1rem;
+  width: clamp(200px, 18vw, 260px); 
+  padding: 1rem;                     /* was 1.5rem */
   background: #fff;
   border-radius: 18px;
   box-shadow: inset 0 0 0 2px rgba(217, 106, 167, 0.35),
