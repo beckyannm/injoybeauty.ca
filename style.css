@@ -37,7 +37,7 @@
 
 /* Logo block */
 .logo-box {
-  width: clamp(200px, 18vw, 260px); 
+  width: clamp(150px, 18vw, 200px); 
   padding: 1rem;                     /* was 1.5rem */
   background: #fff;
   border-radius: 18px;
