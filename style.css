@@ -118,20 +118,47 @@ main {
 
 /* Footer */
 footer {
-  background: rgba(58, 28, 53, 0.12);
-  padding: 3rem 5vw;
+  background: #fff; /* keep a white footer background as you prefer */
+  padding: 1.25rem 5vw; /* thinner footer */
   color: var(--text-dark);
   font-size: clamp(0.85rem, 1.8vw, 1rem);
+  box-shadow: 0 -8px 30px rgba(58, 28, 53, 0.06); /* subtle separation from content */
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
 
+/* Footer layout: center content and provide a small logo box */
 footer .footer-content {
   display: grid;
-  gap: 0.25rem;
+  gap: 0.5rem;
   max-width: 900px;
   margin: 0 auto;
   text-align: center;
   letter-spacing: 0.04em;
   line-height: 1.3;
+}
+
+/* Small box for Jaymie's official logo */
+.footer-logo {
+  width: clamp(80px, 12vw, 120px);
+  height: clamp(40px, 6vw, 60px);
+  margin: 0 auto 0.5rem;
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(180deg, #ffffff, #f7f7f7); /* subtle shading to separate logo */
+  box-shadow: 0 6px 18px rgba(58, 28, 53, 0.08);
+  border: 1px solid rgba(58,28,53,0.04);
+}
+
+/* Logo image inside the small box */
+.footer-logo img {
+  max-width: 90%;
+  max-height: 90%;
+  object-fit: contain;
+  display: block;
 }
 
 .footer-title {
@@ -152,4 +179,3 @@ body {
   flex-direction: column;
   min-height: 100vh;
 }
-
