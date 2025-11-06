@@ -165,7 +165,7 @@ footer .footer-content {
 }
 
 /* The actual image fills the box responsively while preserving aspect ratio */
-.footer-photo img {Snapchat-1687659624.jpg}
+.footer-photo url('Snapchat-1687659624.jpg')
   display: block;
   width: 100%;
   height: auto;
