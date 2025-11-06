@@ -1,9 +1,4 @@
 /* Fonts */
-@font-face {
-  font-family: 'OpenDyslexic';
-  src: url('https://fonts.cdnfonts.com/s/17213/OpenDyslexic-Regular.otf') format('opentype');
-  font-display: swap;
-}
 
 /* Theme variables */
 :root {
@@ -11,12 +6,6 @@
   --accent: #d96aa7;
   --text-dark: #3a1c35;
 }
-body {
-  background-image: url('walledit2.png');
-  background-repeat: repeat;
-  background-size: auto;
-}
-
 /* Reset / base */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -28,6 +17,17 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+
+  body {
+  background-image: url('walledit2.png');
+  background-repeat: repeat;
+  background-size: auto;
+}
+@font-face {
+  font-family: 'OpenDyslexic';
+  src: url('https://fonts.cdnfonts.com/s/17213/OpenDyslexic-Regular.otf') format('opentype');
+  font-display: swap;
+}
 }
 
 /* === FULL-WIDTH WHITE NAV BAR ===
