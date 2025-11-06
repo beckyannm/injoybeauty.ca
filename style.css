@@ -32,7 +32,7 @@
   justify-content: space-between;
   background: white;   /* or rgba(255, 255, 255, 0.7) */
   border-radius: 0;
-  padding: 1.5rem 2rem;
+  padding: 1rem 1rem;
 }
 
 /* Logo block */
@@ -110,7 +110,7 @@ nav a:focus {
 /* Main content */
 main {
   flex: 1 0 auto;
-  padding: 0 5vw 4rem;
+  padding: 4vw 4rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -118,7 +118,7 @@ main {
 
 footer {
   background: #fff;
-  padding: .05rem, 5vw;
+  padding: .2rem, 4vw;
   color: var(--text-dark);
   font-size: clamp(0.85rem, 1.8vw, 1rem);
   box-shadow: 0 -8px 30px rgba(58, 28, 53, 0.06);
@@ -139,7 +139,7 @@ footer {
 /* Small logo/photo box — set explicit height so object-fit can crop */
 .footer-logo {
   width: clamp(68px, 11vw, 100px);    /* slightly narrower max width */
-  height: clamp(34px, 5vw, 48px);     /* smaller height -> shorter box */
+  height: clamp(25px, 5vw, 48px);     /* smaller height -> shorter box */
   margin: 0 auto 0.25rem;             
   border-radius: 8px;
   overflow: hidden;
