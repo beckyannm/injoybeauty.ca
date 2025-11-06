@@ -8,25 +8,6 @@
 }
 /* Reset / base */
 * { margin: 0; padding: 0; box-sizing: border-box; }
-
-body {
-  background-color: var(--primary-bg);
-  font-family: 'OpenDyslexic', 'Open Dyslexic', sans-serif;
-  color: var(--text-dark);
-  line-height: 1.6;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-
-  @font-face {
-  font-family: 'OpenDyslexic';
-  src: url('https://fonts.cdnfonts.com/s/17213/OpenDyslexic-Regular.otf') format('opentype');
-  font-display: swap;
-  background-image: url('walledit2.png');
-  background-repeat: repeat;
-  background-size: auto;
-}
-
 /* === FULL-WIDTH WHITE NAV BAR ===
    Option A (recommended): put the white background on <header>
    — makes the white bar span the entire screen edge-to-edge. */
@@ -159,4 +140,16 @@ footer .footer-content {
 }
 
 footer a { color: inherit; text-decoration: underline; }
+
+html, body { height: 100%; }
+
+body {
+  background: var(--primary-bg) url('/walledit2.png') top left / 260px auto repeat fixed;
+  font-family: 'OpenDyslexic', sans-serif;
+  color: var(--text-dark);
+  line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
 
