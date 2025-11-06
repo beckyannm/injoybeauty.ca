@@ -159,14 +159,12 @@ footer {
   border: 0;
 }
 html, body { height: 100%; }
-
 body {
   background-color: var(--primary-bg);
   background-image: url('25098.jpg');
-  background-repeat: no-repeat;      
+  background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: top left;
   background-size: auto;
   /* ...other styles... */
-}
 }
