@@ -116,19 +116,17 @@ main {
   justify-content: center;
 }
 
-/* Footer */
 footer {
-  background: #fff; /* keep a white footer background as you prefer */
-  padding: 1.25rem 5vw; /* thinner footer */
+  background: #fff;
+  padding: 1.25rem 5vw;
   color: var(--text-dark);
   font-size: clamp(0.85rem, 1.8vw, 1rem);
-  box-shadow: 0 -8px 30px rgba(58, 28, 53, 0.06); /* subtle separation from content */
+  box-shadow: 0 -8px 30px rgba(58, 28, 53, 0.06);
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
 }
 
-/* Footer layout: center content and provide a small logo box */
-footer .footer-content {
+.footer-content {
   display: grid;
   gap: 0.5rem;
   max-width: 900px;
@@ -138,7 +136,7 @@ footer .footer-content {
   line-height: 1.3;
 }
 
-/* Small box for Jaymie's official logo */
+/* Small logo/photo box — set explicit height so object-fit can crop */
 .footer-logo {
   width: clamp(80px, 12vw, 120px);
   height: clamp(40px, 6vw, 60px);
@@ -148,36 +146,19 @@ footer .footer-content {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(180deg, #ffffff, #f7f7f7); /* subtle shading to separate logo */
+  background: linear-gradient(180deg, #ffffff, #f7f7f7);
   box-shadow: 0 6px 18px rgba(58, 28, 53, 0.08);
   border: 1px solid rgba(58,28,53,0.04);
 }
 
-/* Logo image inside the small box */
+/* actual <img> fills the box and can be cropped via object-fit */
 .footer-photo {
-  width: 100%;
-  max-width: 900px;           /* limits how wide the photo becomes */
-  margin: 0.75rem auto 0;     /* space above and centers it */
-  overflow: hidden;
-  border-radius: 14px;        /* rounded corners */
-  box-shadow: 0 10px 30px rgba(58, 28, 53, 0.12); /* subtle lift */
-  border: 1px solid rgba(58,28,53,0.04);
-}
-
-/* The actual image fills the box responsively while preserving aspect ratio */
-.footer-photo url('Snapchat-1687659624.jpg')
   display: block;
   width: 100%;
-  height: auto;
-  object-fit: cover; /* crops if necessary to fill width */
+  height: 100%;        /* important so object-fit can crop */
+  object-fit: cover;   /* crops to fill the box */
+  border: 0;
 }
-.footer-title {
-  font-weight: 700;
-  font-size: clamp(1.1rem, 2.4vw, 1.3rem);
-}
-
-footer a { color: inherit; text-decoration: underline; }
-
 html, body { height: 100%; }
 
 body {
