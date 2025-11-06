@@ -45,7 +45,7 @@ body {
   margin: 0;
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: 0.5rem;
   align-items: center;
   justify-content: space-between;
   background: white;   /* or rgba(255, 255, 255, 0.7) */
