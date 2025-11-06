@@ -81,7 +81,7 @@ nav {
 }
 
 .center-photo img {
-  max-width: 80%;           /* keeps image responsive */
+  max-width: 50%;           /* keeps image responsive */
   height: auto;             /* keeps proportions */
   border-radius: 20px;      /* optional, makes edges rounded */
   box-shadow: 0 10px 30px rgba(58, 28, 53, 0.15); /* subtle shadow */
