@@ -118,7 +118,7 @@ main {
 
 footer {
   background: #fff;
-  padding: 1rem, 5vw;
+  padding: .075rem, 5vw;
   color: var(--text-dark);
   font-size: clamp(0.85rem, 1.8vw, 1rem);
   box-shadow: 0 -8px 30px rgba(58, 28, 53, 0.06);
@@ -138,18 +138,17 @@ footer {
 
 /* Small logo/photo box — set explicit height so object-fit can crop */
 .footer-logo {
-  width: clamp(80px, 12vw, 120px);
-  height: clamp(40px, 6vw, 60px);
-  margin: 0 auto 0.5rem;
-  border-radius: 10px;
+  width: clamp(68px, 11vw, 100px);    /* slightly narrower max width */
+  height: clamp(34px, 5vw, 48px);     /* smaller height -> shorter box */
+  margin: 0 auto 0.25rem;             
+  border-radius: 8px;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
   background: linear-gradient(180deg, #ffffff, #f7f7f7);
   box-shadow: 0 6px 18px rgba(58, 28, 53, 0.08);
-  border: 1px solid rgba(58,28,53,0.04);
-}
+  border: 1px solid rgba(58,28,53,0.04);}
 
 /* actual <img> fills the box and can be cropped via object-fit */
 .footer-photo {
