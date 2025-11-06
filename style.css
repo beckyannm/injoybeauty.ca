@@ -30,7 +30,7 @@ body {
    — makes the white bar span the entire screen edge-to-edge. */
  header {
   width: 100%;
-  max-width: 90vw;
+  max-width: 98vw;
   box-sizing: border-box;
   background: #fff;
   position: sticky;
