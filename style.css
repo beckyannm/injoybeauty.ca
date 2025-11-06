@@ -38,7 +38,7 @@
 /* Logo block */
 .logo-box {
   width: clamp(150px, 18vw, 200px); 
-  padding: 1rem;                     /* was 1.5rem */
+  padding: 1rem;                     
   background: #fff;
   border-radius: 18px;
   display: flex;
