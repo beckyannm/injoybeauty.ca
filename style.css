@@ -154,13 +154,23 @@ footer .footer-content {
 }
 
 /* Logo image inside the small box */
-.footer-logo img {
-  max-width: 90%;
-  max-height: 90%;
-  object-fit: contain;
-  display: block;
+.footer-photo {
+  width: 100%;
+  max-width: 900px;           /* limits how wide the photo becomes */
+  margin: 0.75rem auto 0;     /* space above and centers it */
+  overflow: hidden;
+  border-radius: 14px;        /* rounded corners */
+  box-shadow: 0 10px 30px rgba(58, 28, 53, 0.12); /* subtle lift */
+  border: 1px solid rgba(58,28,53,0.04);
 }
 
+/* The actual image fills the box responsively while preserving aspect ratio */
+.footer-photo img {Snapchat-1687659624.jpg}
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover; /* crops if necessary to fill width */
+}
 .footer-title {
   font-weight: 700;
   font-size: clamp(1.1rem, 2.4vw, 1.3rem);
