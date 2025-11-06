@@ -38,7 +38,7 @@
 /* Logo block */
 .logo-box {
   width: clamp(150px, 18vw, 200px); 
-  padding: 1rem;                     
+  padding: 1.5rem;                     
   background: #fff;
   border-radius: 18px;
   display: flex;
@@ -161,7 +161,7 @@ footer {
 html, body { height: 100%; }
 
 body {
-  background: var(--primary-bg) url('walledit.png') top left / 750px auto repeat fixed;
+  background: var(--primary-bg) url('walledit.png') top left / 800px auto repeat fixed;
   font-family: 'OpenDyslexic', sans-serif;
   color: var(--text-dark);
   line-height: 1.6;
