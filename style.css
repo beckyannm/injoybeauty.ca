@@ -15,7 +15,7 @@
 body {
   background-color: var(--primary-bg);
   background-image: url('simplewhitefloral.jpg');
-  background-repeat: no-repeat;
+  background-repeat: repeat;
   background-attachment: fixed;
   background-position: top-left;
   background-size: auto;
