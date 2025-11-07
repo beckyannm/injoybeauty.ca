@@ -170,7 +170,7 @@ nav a:focus {
   padding: 0.7em 5vw;
   text-align: center;
   font-size: 1.1em;
-  position: fixed;
+  position: sticky;
 }
 
 /* Main content */
