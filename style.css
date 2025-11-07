@@ -11,7 +11,17 @@
 /* === FULL-WIDTH WHITE NAV BAR ===
    Option A (recommended): put the white background on <header>
    — makes the white bar span the entire screen edge-to-edge. */
- header {
+
+body {
+  background-color: var(--primary-bg);
+  background-image: url('25098.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: top left;
+  background-size: auto;
+  /* ...other styles... */
+}
+header {
   width: 100%;
   max-width: 100vw;
   box-sizing: border-box;
@@ -251,7 +261,6 @@ footer {
     flex-direction: column;
     align-items: center;
   }
-
   .footer-text {
     border-left: 0;
     border-top: 1px solid #e0e0e0;
@@ -275,33 +284,24 @@ footer {
 }
   /* Small logo/photo box — set explicit height so object-fit can crop */
 .footer-logo {
-  width: clamp(68px, 11vw, 100px);    /* slightly narrower max width */
-  height: clamp(30px, 5vw, 48px);     /* smaller height -> shorter box */
-  margin: 0 auto 0.25rem;             
+  margin: 0 auto 0.25rem;
   border-radius: 8px;
-  overflow: hidden;
+  overflow: visible;           /* let image overflow naturally */
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(180deg, #ffffff, #f7f7f7);
-  border: 1px solid rgba(58,28,53,0.04);}
+  background: none;            /* optional: remove BG if you want */
+  border: none;                /* optional: remove border */
+}
 
 /* actual <img> fills the box and can be cropped via object-fit */
 .footer-photo {
   display: block;
-  width: 100%;
-  height: 100%;        /* important so object-fit can crop */
-  object-fit: cover;   /* crops to fill the box */
+  width: auto;                 /* use image's natural width */
+  height: auto;                /* use image's natural height */
+  object-fit: unset;           /* no cropping */
   border: 0;
 }
 html, body { height: 100%; }
 
-body {
-  background-color: var(--primary-bg);
-  background-image: url('25098.jpg');
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: top left;
-  background-size: auto;
-  /* ...other styles... */
-}
+
