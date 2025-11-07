@@ -168,7 +168,6 @@ footer {
   align-items: center;
   justify-content: center;
   background: linear-gradient(180deg, #ffffff, #f7f7f7);
-  box-shadow: 0 6px 18px rgba(58, 28, 53, 0.08);
   border: 1px solid rgba(58,28,53,0.04);}
 
 /* actual <img> fills the box and can be cropped via object-fit */
