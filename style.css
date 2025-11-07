@@ -34,7 +34,7 @@ header {
 }
 .header-divider {
   width: 1px;
-  height: 48px; /* adjust as needed */
+  height: 150px; /* adjust as needed */
   background: #e0e0e0;
   margin: 0 2rem;
   align-self: center;
