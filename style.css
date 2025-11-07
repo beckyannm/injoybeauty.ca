@@ -73,19 +73,36 @@ nav {
   gap: 0.25rem;
   justify-content: flex-end;
 }
+/* center photo with "injoy beauty */
 .center-photo {
   display: flex;
-  justify-content: center; /* centers horizontally */
-  align-items: center;      /* centers vertically if there's height */
-  margin: 3rem 0;           /* adds space above and below */
+  justify-content: center;
+  align-items: center;
+  margin: 3rem auto;           /* Center horizontally */
+  background: #fff;            /* solid white for non-transparency */
+  border-radius: 20px;
+  padding: 2rem 3vw;
+  max-width: 90vw;
+  box-sizing: border-box;
+  box-shadow: 0 10px 30px rgba(58, 28, 53, 0.15);
 }
 
-.center-photo {
-  background: #fff;           /* Solid white background */
-  box-shadow: 0 10px 30px rgba(58, 28, 53, 0.12); /* for nice shadow */
-  border-radius: 18px;        /* rounded corners, optional */
-  padding: 2rem 3rem;         /* adjust padding as needed */
-  /* If you previously had a background like rgba(255,255,255,0.7), replace it! */
+.center-photo img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(58, 28, 53, 0.15);
+}
+
+@media (max-width: 600px) {
+  .center-photo {
+    padding: 1rem 2vw;
+    border-radius: 12px;
+  }
+  .center-photo img {
+    border-radius: 12px;
+  }
 }
 nav a {
   text-decoration: none;
