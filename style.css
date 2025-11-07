@@ -162,7 +162,14 @@ nav a:focus {
   border-color: rgba(58, 28, 53, 0.08);
   outline: none;
 }
-
+.sub-header {
+  width: 100%;
+  background: #fff0fa;
+  padding: 0.7em 5vw;
+  border-bottom: 1px solid #e0e0e0;
+  text-align: center;
+  font-size: 1.1em;
+}
 /* Main content */
 main {
   flex: 1 0 auto;
