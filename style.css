@@ -296,12 +296,12 @@ footer {
 
 /* actual <img> fills the box and can be cropped via object-fit */
 .footer-photo {
-  display: block;
-  max-width: 64px;       /* set a reasonable max width */
-  height: auto;
-  object-fit: contain;   /* better than unset! */
-  border: 0;
-  margin-bottom: 0.5rem;
+  width: auto;         /* Show at natural width */
+  height: auto;        /* Show at natural height */
+  max-width: none;     /* Do not impose max-width */
+  object-fit: contain; /* Show full image (unless you want crop) */
+  display: inline-block;
+}
 }
 
 html, body {
