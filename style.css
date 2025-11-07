@@ -79,24 +79,22 @@ nav {
   justify-content: center;
   align-items: center;
   margin: 3rem 0;
+  /* Remove padding and border-radius everywhere */
 }
 
 .center-photo img {
   max-width: 100%;
   height: auto;
   display: block;
-  border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(58, 28, 53, 0.15);
+  /* Remove border-radius and box-shadow */
 }
 
 @media (max-width: 600px) {
   .center-photo {
-    padding: 1rem 2vw;
-    border-radius: 12px;
+    /* Remove padding and border-radius for mobile too */
   }
   .center-photo img {
-    border-radius: 12px;
-  }
+    /* Remove border-radius for mobile */
 }
 nav a {
   text-decoration: none;
