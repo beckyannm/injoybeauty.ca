@@ -273,28 +273,7 @@ footer {
   margin: 0.2em 0;  /* minimal space above/below each <p> */
   line-height: 1.2; /* tighter space within each paragraph */
 }
-
-/* Small logo/photo box — set explicit height so object-fit can crop */
-.footer-logo {
-  width: clamp(68px, 11vw, 100px);    /* slightly narrower max width */
-  height: clamp(30px, 5vw, 48px);     /* smaller height -> shorter box */
-  margin: 0 auto 0.25rem;             
-  border-radius: 8px;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(180deg, #ffffff, #f7f7f7);
-  border: 1px solid rgba(58,28,53,0.04);}
-
-/* actual <img> fills the box and can be cropped via object-fit */
-.footer-photo {
-  display: block;
-  width: 100%;
-  height: 100%;        /* important so object-fit can crop */
-  object-fit: cover;   /* crops to fill the box */
-  border: 0;
-}
+  
 html, body { height: 100%; }
 
 body {
