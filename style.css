@@ -32,6 +32,13 @@ header {
   z-index: 1000;
   padding: 1rem 5vw 1.5rem;
 }
+.header-divider {
+  width: 1px;
+  height: 48px; /* adjust as needed */
+  background: #e0e0e0;
+  margin: 0 2rem;
+  align-self: center;
+}
 
 .top-bar {
   width: 100%;
