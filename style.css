@@ -37,7 +37,7 @@ header {
   width: 1px;
   height: 80px; /* adjust as needed */
   background: #e0e0e0;
-  margin: 0 1rem;
+  margin: 0 0.06rem;
   align-self: center;
 }
 
@@ -57,7 +57,7 @@ header {
 
 /* Logo block */
 .logo-box {
-  width: clamp(130px, 15vw, 170px); 
+  width: clamp(120px, 15vw, 150px); 
   padding: 0.5rem;                     
   background: #fff;
   border-radius: 18px;
@@ -91,6 +91,7 @@ nav {
   display: flex;
   flex-wrap: wrap;
   flex-shrink: 0;
+  white-space: nowrap;
   gap: 0.25rem;
   justify-content: flex-end;
 }
