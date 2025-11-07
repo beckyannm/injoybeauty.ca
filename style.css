@@ -30,7 +30,7 @@ header {
   position: sticky;
   top: 0;
   z-index: 1000;
-  padding: 1rem 5vw 1.5rem;
+  padding: 0.5rem 5vw 0.8rem;
 }
 .header-divider {
   width: 1px;
@@ -50,13 +50,13 @@ header {
   justify-content: space-between;
   background: white;   /* or rgba(255, 255, 255, 0.7) */
   border-radius: 0;
-  padding: 1rem 1rem;
+  padding: 0.5rem 1rem;
 }
 
 /* Logo block */
 .logo-box {
   width: clamp(150px, 18vw, 200px); 
-  padding: 1.5rem;                     
+  padding: 0.5rem;                     
   background: #fff;
   border-radius: 18px;
   display: flex;
