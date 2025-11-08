@@ -245,6 +245,22 @@ button:focus-visible {
   flex-direction: row; /* default row layout */
 }
 
+/* Make the "Follow me" text larger and place it above the social icons.
+   We keep .footer-right unchanged here; only .footer-left is stacked vertically. */
+.footer-left {
+  flex-direction: column;
+  align-items: center;
+  gap: .5rem;
+}
+
+/* Increased size and weight for the "Follow me" label so it stands out */
+.footer-left p{
+  margin:0;
+  font-size:1.05rem; /* larger */
+  font-weight:600;   /* bolder */
+  color:var(--muted);
+}
+
 /* Slight spacing and layout for footer-right contents (logo + aside text) */
 .footer-right .footer-photo{
   max-height:56px;
@@ -256,7 +272,7 @@ button:focus-visible {
 }
 
 /* Make sure the small "Follow me" text is vertically centered with the icons */
-.footer-left p{ margin:0; font-size:0.95rem; color:var(--muted); }
+.footer-left p{ margin:0; font-size:1.05rem; color:var(--muted); }
 
 /* Social icons */
 .footer-actions{
