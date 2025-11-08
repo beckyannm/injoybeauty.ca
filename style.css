@@ -229,7 +229,6 @@ footer {
 
 /* --- Follow Me Section --- */
 .footer-buttons {
-  border: none;
   cursor: pointer;
   appearance: none;
   display: flex;
