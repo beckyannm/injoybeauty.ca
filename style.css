@@ -26,7 +26,7 @@ html,body{height:100%}
 body{
   margin:0;
   /* use Inter when available, then fall back to system fonts */
-  font-family: 'Helvetica', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
   background-color:var(--bg);
   color:var(--text);
   line-height:1.4;
@@ -38,23 +38,36 @@ body{
   background-size: auto;
 }
 
-/* Option 2 — Overlay + blur for .site-main (paste in place of the old combined block) */
+/* --- HERO TRANSPARENT: apply overlay to all direct children except .center-photo --- */
+/* Apply translucent overlay/blur to other sections but keep the hero (and its padding) transparent. */
 .site-main {
-  position: relative; /* create stacking context for the overlay */
-  background: transparent; /* overlay controls appearance */
+  position: relative;
+  background: transparent;
   z-index: 0;
 }
 
-.site-main::before {
+/* Ensure direct children sit above their overlay pseudo-element */
+.site-main > * {
+  position: relative;
+  z-index: 1; /* content sits above its own overlay pseudo-element */
+}
+
+/* Apply overlay to every direct child except the hero (.center-photo) */
+.site-main > *:not(.center-photo)::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(255,255,255,0.25); /* adjust alpha to taste (0.45–0.7) */
+  background: rgba(255,255,255,0.25);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
-  pointer-events: none; /* allow clicks through */
+  pointer-events: none;
   z-index: 0;
-  border-radius: inherit; /* keeps same corner rounding if applied */
+  border-radius: inherit;
+}
+
+/* Make the hero container explicitly transparent */
+.center-photo {
+  background: transparent;
 }
 
 /* make sure header/footer still have a simple translucent backdrop */
@@ -65,19 +78,14 @@ body{
   z-index: 10;
 }
 
-/* ensure content inside main sits above the overlay */
-.site-main > * {
-  position: relative;
-  z-index: 1;
-}
-
 /* Respect reduced motion/possible reduced-transparency preferences */
 @media (prefers-reduced-motion: reduce) {
-  .site-main::before {
+  .site-main > *:not(.center-photo)::before {
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
   }
 }
+
 /* Skip link */
 .skip-link{
   position: absolute;
@@ -140,7 +148,6 @@ body{
 
 /* Nav - pill style with updated colors */
 .primary-nav{
-  /* give the nav a stacking context so it sits above overlapped content when needed */
   z-index: 12;
   -webkit-overflow-scrolling: touch; /* smooth scrolling on iOS when overflow occurs */
 }
@@ -151,23 +158,21 @@ body{
   display:flex;
   gap:.5rem;
   align-items:center;
-  /* allow wrapping so links remain visible on narrow screens */
   flex-wrap: wrap;
 }
 .primary-nav a{
   display:inline-block;
   text-decoration:none;
   color:var(--pill-text);
-  background: var(--pill-bg);        /* normal pill color */
+  background: var(--pill-bg);
   padding: .4rem .9rem;
-  border-radius: 999px;              /* pill shape */
-  border: 1px solid rgba(0,0,0,0.06);/* subtle border to separate light pills */
+  border-radius: 999px;
+  border: 1px solid rgba(0,0,0,0.06);
   font-weight: 500;
   font-size: 0.95rem;
   transition: background-color .18s ease, color .18s ease, transform .16s cubic-bezier(.2,.8,.2,1), box-shadow .16s ease;
   -webkit-tap-highlight-color: transparent;
   transform-origin: center;
-  /* ensure anchors can be scrolled into view on tiny screens */
   min-width: max-content;
 }
 
@@ -175,7 +180,7 @@ body{
 .primary-nav a:hover,
 .primary-nav a:focus,
 .primary-nav a:focus-visible {
-  background: var(--pill-hover-bg);  /* hover color: light blue */
+  background: var(--pill-hover-bg);
   color: var(--pill-hover-text);
   text-decoration: none;
   box-shadow: 0 6px 18px rgba(0,0,0,0.08);
@@ -185,13 +190,13 @@ body{
 /* Active/current page pill */
 .primary-nav a[aria-current="page"],
 .primary-nav a.active {
-  background: var(--pill-active-bg); /* active color: light purple */
+  background: var(--pill-active-bg);
   color: var(--pill-active-text);
   box-shadow: 0 2px 10px rgba(0,0,0,0.06);
   transform: none;
 }
 
-/* Focus visuals — show the requested light-yellow focus ring for keyboard users */
+/* Focus visuals — light-yellow focus ring for keyboard users */
 .primary-nav a:focus-visible,
 a:focus-visible,
 button:focus-visible {
@@ -205,7 +210,7 @@ button:focus-visible {
   display:flex;
   justify-content:center;
   align-items:center;
-  padding:2rem 1rem;
+  padding:2rem 1rem; /* this padding remains transparent */
 }
 .hero-image{
   width:100%;
@@ -218,31 +223,30 @@ button:focus-visible {
 
 /* Footer - condensed and centered layout */
 .site-footer{
-  /* slightly more opaque footer backdrop to ensure contrast */
   background: rgba(250,250,250,0.95);
   padding:1rem 1rem;
 }
 
 /* Make the footer inner container narrower so items sit closer to the center */
 .footer-inner{
-  max-width:var(--footer-max-width);   /* narrower than page width */
-  margin:0 auto;                       /* center the entire block */
+  max-width:var(--footer-max-width);
+  margin:0 auto;
   display:flex;
-  gap:1rem;                         /* space between left and right groups */
+  gap:1rem;
   align-items:center;
-  justify-content:center;              /* keep children centered horizontally */
+  justify-content:center;
   padding:0.25rem 0;
-  text-align:center;                   /* ensure child text centers nicely */
+  text-align:center;
 }
 
-/* Force the left and right groups to be natural width and centered inside the footer-inner */
+/* Left/right groups */
 .footer-left,
 .footer-right{
   display:flex;
   gap:.75rem;
   align-items:center;
   justify-content:center;
-  flex: 0 1 auto; /* do not stretch full width */
+  flex: 0 1 auto;
   flex-direction: row; /* default row layout */
 }
 
@@ -252,33 +256,31 @@ button:focus-visible {
   align-items: center;
   gap: .4rem;
 }
-
-/* Increased size and weight for the "Follow me" label so it stands out */
 .footer-left p{
   margin:0;
-  font-size:1.05rem; /* slightly larger */
-  font-weight:600;   /* bolder */
+  font-size:1.5rem;
+  font-weight:600;
   color:var(--muted);
 }
 
-/* Slight spacing and layout for footer-right contents (logo + aside text) */
+/* Footer-right: logo + copy */
 .footer-right .footer-photo{
   max-height:56px;
   width:auto;
   display:block;
-  margin: 0; /* base: no extra margin; gap controls spacing */
+  margin: 0;
 }
 .footer-right .footer-copy{
   display:block;
   text-align:center;
   margin:0;
-  line-height:1; /* tighter internal spacing */
+  line-height:1;
 }
 
-/* Footer typography: use Inter and tighten spacing between brand and tagline */
+/* Footer typography: use Inter (or fallbacks) and tighten spacing between brand and tagline */
 .footer-right .footer-copy h3,
 .footer-right .footer-copy .brand-name {
-  font-family: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-weight: 700;
   font-size: 1.05rem;
   line-height: 1.02;
@@ -290,7 +292,7 @@ button:focus-visible {
 
 .footer-right .footer-copy p,
 .footer-right .footer-copy .tagline {
-  font-family: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: 'Helvetica Neue', Helvetica, sans-serif;
   font-weight: 500;
   font-size: 0.95rem;
   line-height: 1.04;
@@ -300,9 +302,9 @@ button:focus-visible {
   display: block;
 }
 
-/* Make the gap between logo and copy smaller */
+/* Reduce gap between logo and copy */
 .footer-right {
-  gap: 0.28rem; /* ~5px between logo and text by default */
+  gap: 0.28rem; /* ~4–5px between logo and text */
 }
 .footer-right .footer-photo {
   margin-bottom: 2px; /* small vertical gap under the logo when stacked */
@@ -325,24 +327,24 @@ a:focus, button:focus{
 /* Utility */
 .header-divider,
 .footer-divider{ width:1px; background:#eee; height:38px; margin:0 0.75rem; }
-/* --- make vertical dividers horizontal on small screens --- */
 
+/* Responsive & accessibility adjustments */
 @media (max-width: 700px) {
   .header-divider,
   .footer-divider {
-    width: 70%;               /* horizontal length; adjust as needed */
-    height: 1px;              /* thin horizontal line */
-    margin: 0.5rem auto;      /* center it and add small vertical spacing */
+    width: 70%;
+    height: 1px;
+    margin: 0.5rem auto;
     background: #eee;
   }
-  /* ensure header stacks when needed so divider sits between elements */
   .top-bar {
     flex-direction: column;
     gap: 0.5rem;
     align-items: center;
   }
 }
-/* Reduce motion preference: remove transform/animation for those who request reduced motion */
+
+/* Respect reduced motion preference */
 @media (prefers-reduced-motion: reduce){
   *{ animation-duration:0.001ms !important; transition-duration:0.001ms !important; scroll-behavior:auto !important; }
   .primary-nav a,
@@ -352,7 +354,6 @@ a:focus, button:focus{
 }
 
 /* Responsive adjustments */
-/* stack the header elements on narrow screens and center nav pills */
 @media (max-width:900px){
   .footer-inner{
     gap:1rem;
@@ -366,7 +367,6 @@ a:focus, button:focus{
   .primary-nav ul{
     justify-content: center;
   }
-  /* reduce logo size so nav has room */
   .logo-img{
     max-width: 140px;
     height: auto;
@@ -380,7 +380,7 @@ a:focus, button:focus{
   }
   .primary-nav{
     width: 100%;
-    overflow-x: auto;     /* allow horizontal scrolling if many pills */
+    overflow-x: auto;
     -webkit-overflow-scrolling: touch;
   }
   .primary-nav ul{
@@ -390,25 +390,25 @@ a:focus, button:focus{
   .logo-img{ max-width: 120px; }
 }
 
+/* On small screens, stack footer content vertically and keep everything centered */
 @media (max-width:700px){
-  /* On small screens, stack footer content vertically and keep everything centered */
   .footer-inner{
     flex-direction:column;
     gap:.75rem;
     align-items:center;
     justify-content:center;
-    max-width:calc(var(--footer-max-width) - 40px); /* allow some breathing room */
+    max-width:calc(var(--footer-max-width) - 40px);
     padding:0.5rem 0;
   }
   .footer-left, .footer-right{ flex-direction:column; gap:.5rem; }
   .footer-right .footer-photo{ max-height:48px; }
 }
 
-/* --- Desktop override: stack logo above footer text in .footer-right --- */
+/* Desktop override: stack logo above footer text in .footer-right */
 @media (min-width: 900px) {
   .footer-right {
     display: flex;
-    flex-direction: column; /* stack logo above copy */
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
@@ -431,4 +431,7 @@ a:focus, button:focus{
 /* small-screen tweaks */
 @media (max-width: 480px) {
   .footer-inner { padding-left: 0.5rem; padding-right: 0.5rem; }
+  .footer-right { gap: 0.28rem; }
+  .footer-right .footer-photo { margin-bottom: 0.14rem; }
+  .footer-right .footer-copy h3 { margin-bottom: 0.04rem; }
 }
