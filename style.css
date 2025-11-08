@@ -277,11 +277,12 @@ button:focus-visible {
 /* Brand name + tagline styles (make text on the right compact) */
 .footer-right .footer-copy .brand-name{
   display:block;
+  font-family: Helvetica;
   font-size:1.05rem;
   font-weight:700;
   color:var(--text);
   letter-spacing:0.2px;
-  margin-bottom:0.04rem; /* very small gap (≈1.3px) between name and tagline */
+  margin-bottom:0.02rem; /* very small gap (≈1.3px) between name and tagline */
   line-height:1;
 }
 .footer-right .footer-copy .tagline{
