@@ -13,6 +13,7 @@
   --accent: #f6c6e7;          /* soft light pink accent */
 
   /* Font variables */
+<link href="https://fonts.googleapis.com/css2?family=Delius+Swash+Caps&family=Roboto+Flex:opsz,wght@8..144,100..1000&family=The+Nautigal:wght@400;700&display=swap" rel="stylesheet">
   --ui-font: "Roboto Flex", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --decorative-welcome: "The Nautigal", serif;
   --decorative-follow: "Delius Swash Caps", cursive;
