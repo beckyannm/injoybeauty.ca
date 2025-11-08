@@ -1,5 +1,5 @@
 :root{
-  --bg: #ffffff;
+  --bg: transparent;
   --text: #202124;
   --muted: #6b6f76;
   --brand: #6b2e6b; /* deep brand purple */
@@ -55,7 +55,7 @@ body{
 }
 
 /* Logo */
-.logo-img, .footer-photo{ display:block; max-width:100%; height:auto; object-fit:contain; }
+.logo-img, .footer-photo{ display:block; max-width:80%; height:auto; object-fit:contain; }
 
 /* Nav */
 .primary-nav ul{
@@ -122,7 +122,7 @@ a:focus, button:focus{
 
 /* Utility */
 .header-divider,
-.footer-divider{ width:1px; background:#eee; height:40px; margin:0 1rem; }
+.footer-divider{ width:1px; background:#eee; height:50px; margin:0 1rem; }
 
 /* Reduce motion preference */
 @media (prefers-reduced-motion: reduce){
