@@ -6,11 +6,11 @@
   --pill-hover-bg: #C2DCF2; /* user-requested hover color */
   --pill-hover-text: #ffffff;
   --accent: #F7E6ED; /* fallback/light accent */
-  --pill-bg: transparent; /* default pill background */
+  --pill-bg: #F7E6ED; /* default pill background */
   --pill-text: var(--text);
   --pill-active-bg: var(--brand);
   --pill-active-text: #ffffff;
-  --focus: #C2F2F0;
+  --focus: #E6F7F0;
   --max-width: 1100px;
 }
 
