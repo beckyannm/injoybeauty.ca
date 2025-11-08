@@ -8,11 +8,13 @@
   --pill-active-text: #202124;
   --pill-hover-bg: #E0F9FF;   /* hover/focus pill background — light blue */
   --pill-hover-text: #202124;
-  /* Focus ring color (updated per your request) */
   --focus: #F9FFE0;           /* light yellow focus outline */
   --brand: #6b2e6b; /* kept for other uses */
   --accent: #f6c6e7; /* fallback/light accent */
+
   --max-width: 1100px;
+  /* New footer width so footer content sits closer to center */
+  --footer-max-width: 700px;
 }
 
 /* Reset & base */
@@ -32,7 +34,8 @@ body{
   background-size: auto;
 }
 
-/* Translucent backdrops to keep content readable over the tiled bg */
+/* Make header, main and footer sit on a translucent backdrop
+   so content stays readable above the tiled background image. */
 .site-header,
 .site-main,
 .site-footer {
@@ -85,6 +88,7 @@ body{
 }
 
 /* Layout container */
+/* reduced vertical spacing in header */
 .top-bar{
   display:flex;
   align-items:center;
@@ -151,9 +155,6 @@ button:focus-visible {
   border-radius: 8px;
 }
 
-/* If you prefer not to show the heavy ring for mouse clicks, you can rely on :focus-visible */
-/* Fallback for browsers without :focus-visible support is kept simple so focus never disappears. */
-
 /* Hero image container and accessibility helpers */
 .center-photo{
   display:flex;
@@ -170,26 +171,55 @@ button:focus-visible {
   border-radius:8px;
 }
 
-/* Footer - reduced vertical spacing */
+/* Footer - condensed and centered layout */
 .site-footer{
+  /* slightly more opaque footer backdrop to ensure contrast */
   background: rgba(250,250,250,0.95);
   padding:1rem 1rem;
 }
+
+/* Make the footer inner container narrower so items sit closer to the center */
 .footer-inner{
-  max-width:var(--max-width);
-  margin:0 auto;
+  max-width:var(--footer-max-width);   /* narrower than page width */
+  margin:0 auto;                       /* center the entire block */
   display:flex;
-  gap:1rem;
-  align-items:flex-start;
-  justify-content:space-between;
+  gap:1.25rem;                         /* space between left and right groups */
+  align-items:center;
+  justify-content:center;              /* keep children centered horizontally */
   padding:0.25rem 0;
+  text-align:center;                   /* ensure child text centers nicely */
 }
+
+/* Force the left and right groups to be natural width and centered inside the footer-inner */
+.footer-left,
+.footer-right{
+  display:flex;
+  gap:.75rem;
+  align-items:center;
+  justify-content:center;
+  flex: 0 1 auto; /* do not stretch full width */
+}
+
+/* Slight spacing and layout for footer-right contents (logo + aside text) */
+.footer-right .footer-photo{
+  max-height:56px;
+  width:auto;
+  display:block;
+}
+.footer-right .footer-copy{
+  display:block;
+}
+
+/* Make sure the small "Follow me" text is vertically centered with the icons */
+.footer-left p{ margin:0; font-size:0.95rem; color:var(--muted); }
+
+/* Social icons */
 .footer-actions{
   display:flex;
   gap:.5rem;
   align-items:center;
 }
-.social-link img{ display:block; }
+.social-link img{ display:block; height:32px; width:32px; object-fit:contain; }
 
 /* Visible focus for buttons/links (global fallback) */
 a:focus, button:focus{
@@ -211,8 +241,23 @@ a:focus, button:focus{
 }
 
 /* Responsive adjustments */
-@media (max-width:800px){
-  .footer-inner{ flex-direction:column; gap:.75rem; align-items:center; text-align:center;}
-  .top-bar{flex-direction:column; gap:.5rem; align-items:center; padding:.6rem;}
-  .primary-nav ul{flex-wrap:wrap; justify-content:center;}
+@media (max-width:900px){
+  /* On medium screens, keep footer compact but stack if needed */
+  .footer-inner{
+    gap:1rem;
+    padding:0.35rem 0;
+  }
+}
+@media (max-width:700px){
+  /* On small screens, stack footer content vertically and keep everything centered */
+  .footer-inner{
+    flex-direction:column;
+    gap:.75rem;
+    align-items:center;
+    justify-content:center;
+    max-width:calc(var(--footer-max-width) - 40px); /* allow some breathing room */
+    padding:0.5rem 0;
+  }
+  .footer-left, .footer-right{ flex-direction:column; gap:.5rem; }
+  .footer-right .footer-photo{ max-height:48px; }
 }
