@@ -37,6 +37,65 @@ body{
   background-position: top center;
   background-size: auto;
 }
+/* ---------- Home intro styles (append at end of style.css) ---------- */
+.home-intro {
+  max-width: 980px;
+  margin: 1.75rem auto;
+  padding: 1rem 1.25rem;
+  text-align: center;
+}
+
+.intro-card {
+  background: rgba(255,255,255,0.9);
+  border-radius: 10px;
+  padding: 1.25rem 1.1rem;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.04);
+}
+
+/* Fancy welcome title using Great Vibes (imported in head). */
+.welcome-title {
+  margin: 0;
+  font-family: "Great Vibes", cursive;
+  color: var(--brand);            /* soft purple from your variables */
+  font-size: clamp(2.0rem, 6vw, 3.6rem); /* responsive sizing */
+  line-height: 0.95;
+  letter-spacing: 0.6px;
+  margin-bottom: 0.35rem;
+  text-wrap: balance;
+}
+
+/* Intro body paragraphs */
+.intro-text {
+  margin: 0.5rem auto 0;
+  color: var(--text);
+  font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  font-size: clamp(0.95rem, 1.8vw, 1.05rem);
+  line-height: 1.5;
+  max-width: 56ch; /* keep line length readable */
+}
+
+/* Slightly stronger emphasis for the closing sentence */
+.home-intro .intro-text[style] {
+  font-weight: 600;
+}
+
+/* Small screens: tighten spacing */
+@media (max-width:700px){
+  .home-intro { margin: 1rem .75rem; padding: .85rem; }
+  .intro-card { padding: .85rem; }
+  .welcome-title { font-size: clamp(1.8rem, 8vw, 2.6rem); }
+  .intro-text { font-size: 0.98rem; max-width: 45ch; text-align:left; }
+  .home-intro { text-align: left; }
+}
+
+/* Improve contrast if needed on very light backgrounds */
+@media (prefers-contrast: more) {
+  .intro-card { background: #fff; }
+  .welcome-title { color: #5a235a; }
+}
+
+/* Utility: small visual separator if you want spacing between intro and hero */
+.home-intro + .center-photo { margin-top: 0.75rem; }
 
 /* --- HERO TRANSPARENT: apply overlay to all direct children except .center-photo --- */
 /* Apply translucent overlay/blur to other sections but keep the hero (and its padding) transparent. */
