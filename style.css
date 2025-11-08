@@ -37,16 +37,46 @@ body{
   background-size: auto;
 }
 
-/* Make header, main and footer sit on a translucent backdrop
-   so content stays readable above the tiled background image. */
-.site-header,
-.site-main,
-.site-footer {
-  background: rgba(255,255,255,0.85);
-  position: relative; /* create stacking context for header items */
-  z-index: 10;        /* keep header above tiled background/other content */
+/* Option 2 — Overlay + blur for .site-main (paste in place of the old combined block) */
+.site-main {
+  position: relative; /* create stacking context for the overlay */
+  background: transparent; /* overlay controls appearance */
+  z-index: 0;
 }
 
+.site-main::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255,255,255,0.55); /* adjust alpha to taste (0.45–0.7) */
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  pointer-events: none; /* allow clicks through */
+  z-index: 0;
+  border-radius: inherit; /* keeps same corner rounding if applied */
+}
+
+/* make sure header/footer still have a simple translucent backdrop */
+.site-header,
+.site-footer {
+  background: rgba(255,255,255,0.85);
+  position: relative;
+  z-index: 10;
+}
+
+/* ensure content inside main sits above the overlay */
+.site-main > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Respect reduced motion/possible reduced-transparency preferences */
+@media (prefers-reduced-motion: reduce) {
+  .site-main::before {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+}
 /* Skip link */
 .skip-link{
   position: absolute;
