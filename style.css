@@ -313,7 +313,7 @@ a:focus, button:focus{
 
 /* Utility */
 .header-divider,
-.footer-divider{ width:1px; background:#eee; height:38px; margin:0 0.75rem; }
+.footer-divider{ width:1px; background:#333; height:38px; margin:0 0.75rem; }
 /* --- make vertical dividers horizontal on small screens --- */
 
 @media (max-width: 700px) {
@@ -322,7 +322,7 @@ a:focus, button:focus{
     width: 70%;               /* horizontal length; adjust as needed */
     height: 1px;              /* thin horizontal line */
     margin: 0.5rem auto;      /* center it and add small vertical spacing */
-    background: #eee;
+    background: #333;
   }
   /* ensure header stacks when needed so divider sits between elements */
   .top-bar {
