@@ -54,19 +54,18 @@ body{
   z-index: 1;
 }
 
-/* Global translucent overlay applied to every direct child except hero and home intro */
-.site-main > *:not(.center-photo):not(.home-intro)::before {
+/* Apply global overlay to everything except hero, home intro, about, services */
+.site-main > *:not(.center-photo):not(.home-intro):not(.about-hero):not(.services-hero)::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(255,255,255,0.60);
+  background: rgba(255,255,255,0.60); /* adjust as you like */
   backdrop-filter: none;
   -webkit-backdrop-filter: none;
   pointer-events: none;
   z-index: 0;
   border-radius: inherit;
 }
-
 /* Make the hero container explicitly transparent */
 .center-photo {
   background: transparent;
