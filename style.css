@@ -246,7 +246,8 @@ button:focus-visible {
 }
 
 /* Make the "Follow me" text larger and place it above the social icons.
-   We keep .footer-right unchanged here; only .footer-left is stacked vertically. */
+   We keep .footer-right behavior as in your original stylesheet (row by default,
+   stacked at >=900px and <=700px). */
 .footer-left {
   flex-direction: column;
   align-items: center;
@@ -266,13 +267,31 @@ button:focus-visible {
   max-height:56px;
   width:auto;
   display:block;
+  margin: 0;
 }
 .footer-right .footer-copy{
   display:block;
+  text-align:center;
+  margin:0;
+  line-height:1.15;
 }
 
-/* Make sure the small "Follow me" text is vertically centered with the icons */
-.footer-left p{ margin:0; font-size:1.05rem; color:var(--muted); }
+/* Brand name + tagline styles (make text on the right more intentional) */
+.footer-right .footer-copy .brand-name{
+  display:block;
+  font-size:1.05rem;
+  font-weight:700;
+  color:var(--text);
+  letter-spacing:0.2px;
+  margin-bottom:0.12rem;
+}
+.footer-right .footer-copy .tagline{
+  display:block;
+  font-size:0.95rem;
+  font-weight:500;
+  color:var(--muted);
+  opacity:0.98;
+}
 
 /* Social icons */
 .footer-actions{
