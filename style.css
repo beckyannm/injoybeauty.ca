@@ -242,6 +242,7 @@ button:focus-visible {
   align-items:center;
   justify-content:center;
   flex: 0 1 auto; /* do not stretch full width */
+  flex-direction: row; /* default row layout */
 }
 
 /* Slight spacing and layout for footer-right contents (logo + aside text) */
@@ -351,4 +352,33 @@ a:focus, button:focus{
   }
   .footer-left, .footer-right{ flex-direction:column; gap:.5rem; }
   .footer-right .footer-photo{ max-height:48px; }
+}
+
+/* --- Desktop override: stack logo above footer text in .footer-right --- */
+@media (min-width: 900px) {
+  .footer-right {
+    display: flex;
+    flex-direction: column; /* stack logo above copy */
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    text-align: center;
+  }
+
+  .footer-right .footer-photo {
+    max-height: 56px;
+    width: auto;
+    display: block;
+    margin-bottom: 0.35rem;
+  }
+
+  .footer-right .footer-copy {
+    display: block;
+    margin: 0;
+  }
+}
+
+/* small-screen tweaks */
+@media (max-width: 480px) {
+  .footer-inner { padding-left: 0.5rem; padding-right: 0.5rem; }
 }
