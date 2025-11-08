@@ -229,12 +229,36 @@ footer {
 
 /* --- Follow Me Section --- */
 .footer-buttons {
+  border: none;
+  cursor: pointer;
+  appearance: none;
   display: flex;
   flex-direction: column;
-  align-items: center;     /* centers the text and icons */
+  align-items: center; 
   justify-content: center;
   gap: 0.8rem;
   text-align: center;
+}
+
+div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 40px;
+}
+
+button {
+  transition: transform 0.7s ease-in-out;
+}
+
+button:hover {
+  transform: rotate(360deg);
+}
+
+.text {
+  font-size: 60px;
+  color: #314de4;
+  font-family: Arial;
 }
 
 /* Pretty and larger "Follow me" text */
