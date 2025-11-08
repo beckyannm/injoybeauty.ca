@@ -2,7 +2,7 @@
 
 /* Theme variables */
 :root {
-  --primary-bg: #FFF7FB;
+  --primary-bg: #transparent;
   --accent: #d96aa7;
   --text-dark: #3a1c35;
   --header-height: 112px;
