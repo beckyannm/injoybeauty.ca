@@ -50,7 +50,7 @@ header {
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  background: rgba(255, 255, 255, 0.7)
+  background: rgba(255, 255, 255, 0.7);
   border-radius: 0;
   padding: 0.5rem 1rem;
 }
@@ -59,7 +59,7 @@ header {
 .logo-box {
   width: clamp(120px, 15vw, 150px); 
   padding: 0.5rem;                     
-  background: rgba(255, 255, 255, 0.7)
+  background: rgba(255, 255, 255, 0.7);
   border-radius: 18px;
   display: flex;
   align-items: center;
@@ -161,6 +161,7 @@ nav a {
     box-sizing: border-box;
   }
 
+}
 nav a:hover,
 nav a:focus {
   background: var(--accent);
@@ -171,7 +172,7 @@ nav a:focus {
 }
 .sub-header {
   width: 100%;
-  background: rgba(255, 255, 255, 0.7)
+  background: rgba(255, 255, 255, 0.7);
   padding: 0.7em 5vw;
   text-align: center;
   font-size: 1.1em;
@@ -285,19 +286,12 @@ footer {
   gap: 0.5rem;
   text-align: center;
 }
-  .footer-buttons {
-    align-items: center;
-  }
 
-  .social-links {
-    justify-content: center;
-  }
-  
-  .footer-text p {
+footer.text p {
   margin: 0.2em 0;  /* minimal space above/below each <p> */
   line-height: 1; /* tighter space within each paragraph */
 }
-  /* Small logo/photo box — set explicit height so object-fit can crop */
+   /* Small logo/photo box — set explicit height so object-fit can crop */
 .footer-logo {
   margin: 0 auto 0.25rem;
   border-radius: 8px;
@@ -363,7 +357,18 @@ header,
 }
 
 /* Footer layout refinements */
+  .footer-buttons {
+    align-items: center;
+  }
 
+  .social-links {
+    justify-content: center;
+  }
+  
+  .footer-text p {
+    margin: 0.2em 0;
+    line-height: 1;
+  }
 }
 .footer-text p {
   line-height: 1.2;
