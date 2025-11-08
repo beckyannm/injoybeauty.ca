@@ -2,21 +2,39 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>InJoy Beauty | Bookings</title>
-  <link rel="stylesheet" href="styles.css" /> <!-- Change as needed -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>InJoy Beauty | Inclusive Beauty Services</title>
+  <!-- Load Inter (Google Fonts) for consistent sans-serif rendering across devices -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- site styles -->
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header>
-    <!-- Include your header/nav here (copy from index.html) -->
+  <!-- Skip link for keyboard users -->
+  <a class="skip-link" href="#main-content">
+    Skip to main content
+    <span class="skip-icon" aria-hidden="true">↘</span>
+  </a>
+
+  <header class="site-header" role="banner">
+    <div class="top-bar">
+      <div class="logo-box">
+        <a href="/" class="logo-link" aria-label="InJoy Beauty home">
+          <img src="InjoyBeauty.jpg" alt="InJoy Beauty logo" class="logo-img" width="160" height="80" />
+        </a>
+      </div>
+
+      <div class="header-divider" aria-hidden="true"></div>
+
+      <nav aria-label="Primary Navigation" class="primary-nav">
+        <ul>
+          <li><a href="index.html" aria-current="page">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="bookings.html">Bookings</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
-  <main>
-    <h1>Bookings</h1>
-    <!-- Start editing/add content here! -->
-    <p>Welcome to our booking page. Choose your service and schedule your appointment below.</p>
-    <!-- Embed booking form, calendar, or instructions here -->
-  </main>
-  <footer>
-    <!-- Include your footer here (copy from index.html) -->
-  </footer>
-</body>
-</html>
