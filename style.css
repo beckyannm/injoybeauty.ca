@@ -1,10 +1,12 @@
 :root{
   --bg: #ffffff;
-  --text: #000000;
+  --text: #202124;
   --muted: #6b6f76;
-  --brand: #6b2e6b; /* deep brand purple */
-  --accent: #f6c6e7; /* light accent used for pill background on hover */
-  --pill-bg: #FFE8FD; /* default pill background */
+  --brand: #6b2e6b; /* deep brand purple (used for active pills) */
+  --pill-hover-bg: #A30096; /* user-requested hover color */
+  --pill-hover-text: #ffffff;
+  --accent: #f6c6e7; /* fallback/light accent */
+  --pill-bg: transparent; /* default pill background */
   --pill-text: var(--text);
   --pill-active-bg: var(--brand);
   --pill-active-text: #ffffff;
@@ -29,11 +31,6 @@ body{
   background-position: top center;
   background-size: cover;
 }
-
-/* If you prefer the background to be subtle behind content, use a light content backdrop:
-   .site-main, .site-header, .site-footer { background: rgba(255,255,255,0.85); }
-   I didn't force it here so the image shows through; feel free to enable the overlay if text contrast is reduced.
-*/
 
 /* Skip link */
 .skip-link{
@@ -114,18 +111,21 @@ body{
   border: 1px solid transparent;
   font-weight: 500;
   font-size: 0.95rem;
-  transition: background-color .18s ease, color .18s ease, transform .12s ease, box-shadow .12s ease;
+  transition: background-color .18s ease, color .18s ease, transform .16s cubic-bezier(.2,.8,.2,1), box-shadow .16s ease;
   -webkit-tap-highlight-color: transparent;
+  transform-origin: center;
 }
 
 /* hover, focus and active states for pill */
+/* On hover/focus we now switch to the requested color (#A30096), white text, and a subtle jump & scale */
 .primary-nav a:hover,
 .primary-nav a:focus,
 .primary-nav a:focus-visible {
-  background: var(--accent);
-  color: var(--brand);
+  background: var(--pill-hover-bg);
+  color: var(--pill-hover-text);
   text-decoration: none;
-  box-shadow: 0 1px 0 rgba(0,0,0,0.02), 0 2px 8px rgba(107,46,107,0.06);
+  box-shadow: 0 6px 18px rgba(163,0,150,0.18);
+  transform: translateY(-6px) scale(1.04);
 }
 
 /* Active/current page pill */
@@ -134,12 +134,6 @@ body{
   background: var(--pill-active-bg);
   color: var(--pill-active-text);
   box-shadow: 0 2px 10px rgba(107,46,107,0.12);
-}
-
-/* subtle lift on hover (disabled for reduced motion) */
-.primary-nav a:hover,
-.primary-nav a:focus-visible{
-  transform: translateY(-2px);
 }
 
 /* ensure visible focus for keyboard users */
@@ -195,13 +189,13 @@ a:focus, button:focus{
 .header-divider,
 .footer-divider{ width:1px; background:#eee; height:38px; margin:0 0.75rem; }
 
-/* Reduce motion preference */
+/* Reduce motion preference: remove transform/animation for those who request reduced motion */
 @media (prefers-reduced-motion: reduce){
   *{ animation-duration:0.001ms !important; transition-duration:0.001ms !important; scroll-behavior:auto !important; }
   .primary-nav a,
   .primary-nav a:hover,
   .primary-nav a:focus,
-  .primary-nav a:focus-visible { transform: none !important; transition: none !important; }
+  .primary-nav a:focus-visible { transform: none !important; transition: none !important; box-shadow: none !important; }
 }
 
 /* Responsive adjustments */
