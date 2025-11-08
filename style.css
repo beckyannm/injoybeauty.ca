@@ -254,7 +254,8 @@ button:focus-visible {
 /* Increased size and weight for the "Follow me" label so it stands out */
 .footer-left p{
   margin:0;
-  font-size:1.45rem; /* slightly larger */
+  font-family: Helvetica;
+  font-size: 2rem; /* slightly larger */
   font-weight:600;   /* bolder */
   color:var(--muted);
 }
