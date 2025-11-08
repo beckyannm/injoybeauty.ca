@@ -402,7 +402,7 @@ a:focus, button:focus{
 
 /* ---------- Home intro styles (decorative heading left-aligned) ---------- */
 .home-intro {
-  max-width: 600px;
+  max-width: 750px;
   margin: 1.75rem auto;
   padding: 1rem 1.25rem;
   text-align: left; /* left-align the intro block so content hugs left */
