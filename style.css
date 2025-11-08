@@ -35,39 +35,6 @@ body{
   background-size: auto;
 }
 
-/* --- HERO TRANSPARENT: apply translucent overlay (no blur) to non-hero children --- */
-/* Removed backdrop blur to improve clarity/performance per request. */
-.site-main {
-  position: relative;
-  background: transparent;
-  z-index: 0;
-}
-
-/* Ensure direct children sit above their overlay pseudo-element */
-.site-main > * {
-  position: relative;
-  z-index: 1; /* content sits above its own overlay pseudo-element */
-}
-
-/* Apply translucent overlay to every direct child except the hero (.center-photo).
-   No backdrop-filter applied to avoid blur (improves legibility & performance). */
-.site-main > *:not(.center-photo)::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(255,255,255,0.6); /* light translucent wash */
-  backdrop-filter: none;
-  -webkit-backdrop-filter: none;
-  pointer-events: none;
-  z-index: 0;
-  border-radius: inherit;
-}
-
-/* Make the hero container explicitly transparent */
-.center-photo {
-  background: transparent;
-}
-
 /* make sure header/footer still have a simple translucent backdrop */
 .site-header,
 .site-footer {
