@@ -310,7 +310,53 @@ button:focus-visible {
   align-items:center;
 }
 .social-link img{ display:block; height:32px; width:32px; object-fit:contain; }
+/* Instagram circular button: rotate on hover/focus/active */
+.instagram-btn {
+  display: inline-block;
+  width: 48px;           /* adjust size as needed */
+  height: 48px;
+  padding: 0;
+  margin-left: 10px;     /* your existing spacing */
+  border-radius: 50%;
+  overflow: hidden;
+  background: transparent;
+  border: none;
+  text-decoration: none;
+  transform-origin: 50% 50%;
+  transition: transform 0.7s cubic-bezier(.21,.9,.3,1);
+  will-change: transform;
+}
 
+/* Keep the image filling the button */
+.instagram-icon {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover; /* or contain if you prefer */
+  pointer-events: none; /* so clicks go to the anchor */
+}
+
+/* Hover / keyboard focus / touch fallback */
+.instagram-btn:hover,
+.instagram-btn:focus,
+.instagram-btn:active {
+  transform: rotate(360deg);
+  outline: none;
+}
+
+/* visible focus ring for keyboard users */
+.instagram-btn:focus-visible {
+  box-shadow: 0 0 0 3px rgba(107,46,107,0.16);
+  border-radius: 50%;
+}
+
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .instagram-btn { transition: none; }
+  .instagram-btn:hover,
+  .instagram-btn:focus,
+  .instagram-btn:active { transform: none; }
+}
 /* Utility */
 .header-divider,
 .footer-divider{ width:1px; background:#eee; height:38px; margin:0 0.75rem; }
