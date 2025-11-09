@@ -12,8 +12,7 @@
   --brand: #6b2e6b;           /* primary brand purple */
   --accent: #f6c6e7;          /* soft light pink accent */
 
-  /* Font variables */
-<link href="https://fonts.googleapis.com/css2?family=Delius+Swash+Caps&family=Roboto+Flex:opsz,wght@8..144,100..1000&family=The+Nautigal:wght@400;700&display=swap" rel="stylesheet">
+  /* Font variables (link to fonts must be in HTML <head>, not here) */
   --ui-font: "Roboto Flex", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --decorative-welcome: "The Nautigal", serif;
   --decorative-follow: "Delius Swash Caps", cursive;
@@ -506,7 +505,7 @@ button:focus-visible {
   margin: 0 0 1rem 0;
   overflow: auto; /* allows the intrinsic image to overflow if very wide */
 }
-.service-figure img {
+.service-figure img, .service-photo {
   width: auto;       /* use the image's intrinsic width */
   max-width: none;   /* don't force down by default on desktop */
   height: auto;
@@ -516,12 +515,13 @@ button:focus-visible {
 }
 /* Small-screen safe fallback: never overflow the viewport on phones */
 @media (max-width:700px) {
-  .service-figure img {
+  .service-figure img, .service-photo {
     max-width: 100%;
     width: auto;
     height: auto;
   }
 }
+
 /* ---------- Bookings hero styles (append to style.css) ---------- */
 .bookings-hero {
   max-width: var(--max-width);
@@ -586,4 +586,5 @@ button:focus-visible {
   .bookings-card { padding: 0.9rem 0.9rem; }
   .bookings-title { font-size: clamp(1.3rem, 7vw, 1.8rem); }
   .bookings-sub, .bookings-availability, .bookings-info { font-size: 0.98rem; }
+
 }
