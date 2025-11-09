@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>InJoy Beauty | Gallery</title>
+
+  <!-- Decorative heading font (Playfair) + Inter -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- site styles -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Gallery-specific styles -->
+  <style>
+    .gallery-hero {
+      max-width: var(--max-width);
+      margin: 1.75rem auto;
+      padding: 0 1rem;
+    }
+
+    .gallery-card {
+      background: rgba(255,255,255,0.94);
+      border-radius: 10px;
+      padding: 1.25rem 1.5rem;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+      position: relative;
+      z-index: 2;
+    }
+
+    .gallery-note {
+      margin: 0.5rem 0;
+      color: var(--text);
+      font-family: var(--ui-font);
+      font-size: 1rem;
+      line-height: 1.55;
+      max-width: 68ch;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.25rem;
+      margin: 1.25rem 0;
+    }
+
+    .gallery-item {
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .placeholder {
+      background: linear-gradient(135deg, #f7f2f6 0%, #e8dfe6 100%);
+      border: 2px dashed rgba(107, 46, 107, 0.2);
+      border-radius: 8px;
+      padding: 3rem 1rem;
+      text-align: center;
+      color: var(--muted);
+      font-weight: 500;
+      font-size: 0.95rem;
+      min-height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .gallery-caption {
+      margin-top: 0.5rem;
+      font-size: 0.92rem;
+      color: var(--text);
+      text-align: center;
+      font-weight: 500;
+    }
+
+    /* Password overlay styles */
+    .pw-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+
+    .pw-overlay[hidden] {
+      display: none;
+    }
+
+    .pw-modal {
+      background: white;
+      border-radius: 12px;
+      padding: 2rem;
+      max-width: 400px;
+      width: 100%;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      text-align: center;
+    }
+
+    .pw-modal h2 {
+      margin: 0 0 0.5rem 0;
+      font-family: "Playfair Display", serif;
+      color: var(--brand);
+      font-size: 1.75rem;
+    }
+
+    .pw-modal p {
+      margin: 0 0 1.25rem 0;
+      color: var(--muted);
+      font-size: 0.98rem;
+    }
+
+    .pw-input-row {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .pw-input-row input {
+      flex: 1;
+      padding: 0.625rem 0.875rem;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      font-size: 0.98rem;
+      font-family: var(--ui-font);
+    }
+
+    .pw-input-row input:focus {
+      outline: 2px solid var(--brand);
+      outline-offset: 2px;
+      border-color: var(--brand);
+    }
+
+    .pw-input-row button {
+      padding: 0.625rem 1.5rem;
+      background: var(--brand);
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: var(--ui-font);
+      transition: background 0.2s ease;
+    }
+
+    .pw-input-row button:hover {
+      background: #552255;
+    }
+
+    .pw-error {
+      color: #d32f2f;
+      font-size: 0.9rem;
+      min-height: 1.2rem;
+      margin-top: 0.5rem;
+    }
+
+    @media (max-width: 700px) {
+      .gallery-hero {
+        padding: 0 0.75rem;
+        margin: 1rem auto;
+      }
+      .gallery-card {
+        padding: 0.9rem 1rem;
+      }
+      .gallery-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+      .pw-modal {
+        padding: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content <span class="skip-icon" aria-hidden="true">↘</span></a>
+
+  <header class="site-header" role="banner">
+    <div class="top-bar">
+      <div class="logo-box">
+        <a href="index.html" class="logo-link" aria-label="InJoy Beauty home">
+          <img src="InjoyBeauty.jpg" alt="InJoy Beauty logo" class="logo-img" width="160" height="80">
+        </a>
+      </div>
+      <div class="header-divider" aria-hidden="true"></div>
+      <nav aria-label="Primary Navigation" class="primary-nav">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="bookings.html">Bookings</a></li>
+          <li><a href="gallery.html" aria-current="page">Gallery</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content" class="site-main" role="main" tabindex="-1">
+    <section class="gallery-hero" aria-labelledby="gallery-heading">
+      <div class="gallery-card">
+        <h1 id="gallery-heading" style="margin-top:0; font-family:Playfair Display, serif;">A Look Inside InJoy Beauty</h1>
+        <p class="gallery-note"><strong>Note:</strong> This will have to wait until next year when I move into a new place — for now I offer only mobile services.</p>
+        <p class="gallery-note">Step inside my sensory-friendly home salon — a calm, welcoming space designed for comfort and accessibility. Here, beauty is about feeling good, not just looking good.</p>
+
+        <div class="gallery-grid" aria-live="polite">
+          <!-- Placeholder items for future photos -->
+          <figure class="gallery-item" role="group" aria-label="Salon setup — coming soon">
+            <div class="placeholder" role="img" aria-label="Salon setup placeholder">Salon setup — coming soon</div>
+            <figcaption class="gallery-caption">Salon setup (wheelchair accessible)</figcaption>
+          </figure>
+
+          <figure class="gallery-item" role="group" aria-label="Soft lighting placeholder">
+            <div class="placeholder" role="img" aria-label="Soft lighting placeholder">Soft lighting — coming soon</div>
+            <figcaption class="gallery-caption">Soft lighting &amp; calming colors</figcaption>
+          </figure>
+
+          <figure class="gallery-item" role="group" aria-label="Before and after placeholder">
+            <div class="placeholder" role="img" aria-label="Before and after placeholder">Before / After — coming soon</div>
+            <figcaption class="gallery-caption">Before &amp; after (with permission)</figcaption>
+          </figure>
+
+          <figure class="gallery-item" role="group" aria-label="Smiling clients placeholder">
+            <div class="placeholder" role="img" aria-label="Smiling clients placeholder">Smiling clients — coming soon</div>
+            <figcaption class="gallery-caption">Smiling clients &amp; cozy atmosphere</figcaption>
+          </figure>
+
+          <figure class="gallery-item" role="group" aria-label="Cozy atmosphere placeholder">
+            <div class="placeholder" role="img" aria-label="Cozy atmosphere placeholder">Cozy atmosphere — coming soon</div>
+            <figcaption class="gallery-caption">Gentle care &amp; calm spaces</figcaption>
+          </figure>
+
+          <figure class="gallery-item" role="group" aria-label="Mobile services placeholder">
+            <div class="placeholder" role="img" aria-label="Mobile services placeholder">Mobile services — coming soon</div>
+            <figcaption class="gallery-caption">Mobile services available</figcaption>
+          </figure>
+        </div>
+
+        <p class="gallery-note" style="margin-top:1.25rem;">Photos will be added soon — check back later.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-inner">
+      <div class="footer-left social-links">
+        <p>Follow me</p>
+        <div class="footer-actions">
+          <a href="https://www.facebook.com/" class="social-link" aria-label="InJoy Beauty on Facebook"><img src="smallfacebook.png" alt="Facebook icon" width="32" height="32"></a>
+          <a href="https://www.instagram.com/" class="social-link" aria-label="InJoy Beauty on Instagram"><img src="smallinstagram.png" alt="Instagram icon" width="32" height="32"></a>
+        </div>
+      </div>
+      <div class="footer-divider" aria-hidden="true"></div>
+      <div class="footer-right">
+        <img src="transparentlogo.png" alt="InJoy Beauty" class="footer-photo" width="75" height="72">
+        <aside class="section-card aside-text" aria-label="InJoy Beauty mission">
+          <div class="footer-copy"><h3>INJOY • Inclusive Beauty</h3><p>Everyone deserves to feel beautiful.</p></div>
+        </aside>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Password overlay (client-side protection) -->
+  <div id="pwOverlay" class="pw-overlay" hidden="">
+    <div class="pw-modal" role="dialog" aria-modal="true" aria-labelledby="pwTitle">
+      <h2 id="pwTitle">This gallery is private</h2>
+      <p>Enter the password to view these photos.</p>
+      <div class="pw-input-row">
+        <input id="pwInput" type="password" aria-label="Gallery password" placeholder="Enter password">
+        <button id="pwSubmit">Enter</button>
+      </div>
+      <div id="pwError" class="pw-error" aria-live="polite"></div>
+    </div>
+  </div>
+
+  <script>
+    (function(){
+      // CHANGE THIS to set the gallery password. Keep it a simple client-side gate.
+      const GALLERY_PASSWORD = 'INJOY2025';
+      const storageKey = 'injoy_gallery_unlocked_v1';
+      const overlay = document.getElementById('pwOverlay');
+      const pwInput = document.getElementById('pwInput');
+      const pwSubmit = document.getElementById('pwSubmit');
+      const pwError = document.getElementById('pwError');
+
+      function unlockGallery(){
+        sessionStorage.setItem(storageKey, '1');
+        overlay.hidden = true;
+      }
+      function lockGallery(){
+        overlay.hidden = false;
+        pwInput.focus();
+      }
+
+      // Check sessionStorage on load
+      if(sessionStorage.getItem(storageKey) === '1'){
+        overlay.hidden = true;
+      } else {
+        lockGallery();
+      }
+
+      pwSubmit.addEventListener('click', function(){
+        const val = pwInput.value || '';
+        if(val === GALLERY_PASSWORD){ unlockGallery(); }
+        else { pwError.textContent = 'Incorrect password — please try again.'; pwInput.value = ''; pwInput.focus(); }
+      });
+
+      pwInput.addEventListener('keypress', function(e){ if(e.key === 'Enter'){ pwSubmit.click(); } });
+
+      // Prevent tabbing into the page when locked: trap focus inside modal
+      document.addEventListener('focus', function(e){ if(!overlay.hidden && !overlay.contains(e.target)){ e.stopPropagation(); overlay.querySelector('input').focus(); } }, true);
+    })();
+  </script>
+</body>
+</html>
