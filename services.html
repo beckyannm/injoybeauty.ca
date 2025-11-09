@@ -10,6 +10,91 @@
 
   <!-- site styles -->
   <link rel="stylesheet" href="style.css" />
+
+  <!-- Page-scoped styles for the Services layout -->
+  <style>
+    /* Container for the section so it matches site max-width and spacing */
+    .services-hero {
+      max-width: var(--max-width);
+      margin: 1.5rem auto;
+      padding: 1rem;
+    }
+
+    .services-card {
+      background: rgba(255,255,255,0.92);
+      border-radius: 10px;
+      padding: 1rem;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.04);
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Services grid: 3 columns on desktop, then 2, then 1 */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-top: 1rem;
+      align-items: start;
+    }
+
+    /* Each service block visual */
+    .service-block {
+      background: rgba(250,250,250,0.98);
+      padding: .85rem;
+      border-radius: 8px;
+      min-height: 120px;
+    }
+    .service-block h3 {
+      margin: 0 0 .5rem 0;
+      font-family: "Playfair Display", serif;
+      color: var(--brand);
+      font-size: 1.05rem;
+    }
+    .service-list {
+      margin: 0;
+      padding-left: 1rem;
+      color: var(--text);
+      font-size: .98rem;
+      line-height: 1.45;
+    }
+
+    .service-note {
+      margin-top: 1.15rem;
+      color: var(--muted);
+      font-size: .95rem;
+    }
+
+    /* Photo: keep intrinsic size when possible, but never overflow small screens.
+       Use numeric width/height attributes on the <img> for CLS benefits. */
+    .service-figure {
+      margin: 1.25rem 0 0 0;
+      text-align: center;
+    }
+    .service-photo {
+      width: auto;       /* use intrinsic width by default */
+      max-width: 100%;   /* but never overflow the container on small screens */
+      height: auto;
+      display: inline-block;
+      border-radius: 8px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+    }
+    .service-figure figcaption {
+      margin-top: .5rem;
+      color: var(--muted);
+      font-size: .95rem;
+    }
+
+    /* Breakpoints */
+    @media (max-width: 1100px) {
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 700px) {
+      .services-grid { grid-template-columns: 1fr; }
+      .services-card { padding: .9rem; }
+      .service-figure { margin-top: .9rem; }
+    }
+  </style>
 </head>
 <body>
   <a class="skip-link" href="#main-content">Skip to main content <span class="skip-icon" aria-hidden="true">↘</span></a>
@@ -30,32 +115,36 @@
           <li><a href="about.html">About</a></li>
           <li><a href="services.html" aria-current="page">Services</a></li>
           <li><a href="bookings.html">Bookings</a></li>
-          <li><a href="#contact">Contact</a></li>
-          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
         </ul>
       </nav>
     </div>
   </header>
-
+  
   <main id="main-content" class="site-main" role="main" tabindex="-1">
     <section class="services-hero" aria-labelledby="services-heading">
       <div class="services-card" role="region" aria-labelledby="services-heading">
         <h1 id="services-heading" style="margin-top:0; font-family:Playfair Display, serif;">Services</h1>
-        
+
+        <p class="service-note" style="margin-top:.25rem;">
+          I offer a welcoming, sensory-friendly approach — if you need accommodations (extra time, quiet space, mobile visit), please let me know.
+        </p>
+
         <div class="services-grid" aria-live="polite">
           <div class="service-block" aria-labelledby="hair-services-heading">
             <h3 id="hair-services-heading">Hair Services</h3>
             <ul class="service-list">
               <li>Haircuts for men, women, and children</li>
-              <li>Hair coloring and touch-ups</li>
+              <li>Hair coloring & touch-ups</li>
               <li>Simple styling and trims</li>
             </ul>
           </div>
 
           <div class="service-block" aria-labelledby="facial-body-heading">
-            <h3 id="facial-body-heading">Facial & Body Hair Services</h3>
+            <h3 id="facial-body-heading">Facial & Body Hair</h3>
             <ul class="service-list">
-              <li>Beard trimming and shaving</li>
+              <li>Beard trimming & shaving</li>
               <li>Leg waxing or shaving</li>
               <li>Gentle facial waxing</li>
             </ul>
@@ -64,9 +153,9 @@
           <div class="service-block" aria-labelledby="nail-care-heading">
             <h3 id="nail-care-heading">Nail Care</h3>
             <ul class="service-list">
-              <li>Nail trimming and shaping</li>
-              <li>Hand and foot care</li>
-              <li>Nail painting and polish changes</li>
+              <li>Nail trimming & shaping</li>
+              <li>Hand & foot care</li>
+              <li>Nail painting & polish changes</li>
             </ul>
           </div>
         </div>
@@ -76,12 +165,19 @@
         </p>
 
         <p class="service-note">
-          To request a booking or discuss accommodations, visit <a href="bookings.html">Bookings</a> or call/text <strong>(your phone number)</strong>.
+          To request a booking or discuss accommodations, visit <a href="bookings.html">Bookings</a>.
         </p>
 
-        <!-- Photo moved inside the section so it sits below the notes -->
+        <!-- Photo sits under the notes; intrinsic width/height provided (numbers only) -->
         <figure class="service-figure" aria-hidden="false">
-          <img src="smallerinjoy.jpg" alt="Everyone deserves to feel beautiful — InJoy Beauty services banner" loading="lazy" width="398" height="224" class="service-photo">
+          <!-- If you know the image's exact pixel dimensions, set width/height accordingly.
+               Using numeric width/height helps avoid layout shift. -->
+          <img src="smallerinjoy.jpg"
+               alt="Everyone deserves to feel beautiful — InJoy Beauty services banner"
+               loading="lazy"
+               width="1200"
+               height="700"
+               class="service-photo">
           <figcaption>Mobile and in-salon sensory-friendly services available.</figcaption>
         </figure>
 
