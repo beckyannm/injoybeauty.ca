@@ -434,7 +434,7 @@ button:focus-visible {
   position: relative;
   z-index: 2;
 }
-.home-intro { text-align: left; padding-left: .6rem; padding-right: .6rem; }
+.home-intro { text-align: center; padding-left: .6rem; padding-right: .6rem; }
 .welcome-title {
   margin: 0;
   font-family: var(--decorative-welcome);
