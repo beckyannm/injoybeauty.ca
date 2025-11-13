@@ -5,152 +5,139 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>InJoy Beauty — Services</title>
 
-  <!-- Decorative and UI fonts (Playfair for headings, Inter for UI) -->
+  <!-- Primary UI fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-  <!-- Preconnects and additional fonts requested (includes Tilt Neon) -->
+  <!-- Preconnect and Tilt Neon (neon tilt) font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Damion&family=Hi+Melody&family=Nanum+Pen+Script&family=Tilt+Neon&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Tilt+Neon&display=swap" rel="stylesheet">
 
-  <!-- site styles -->
+  <!-- (Optional) external site stylesheet if you use one -->
   <link rel="stylesheet" href="style.css" />
 
-  <!-- Page-scoped styles for the Services layout -->
   <style>
-    /* Container for the section so it matches site max-width and spacing */
-    .services-hero {
-      max-width: var(--max-width);
-      margin: 1.5rem auto;
-      padding: 1rem;
+    /* Page-scoped styles (kept self-contained for copy/paste) */
+
+    :root {
+      --max-width: 980px;
+      --brand: #8d6cab;
+      --muted: #7a7a7a;
+      --text: #222;
     }
 
+    body {
+      font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      margin: 0;
+      line-height: 1.45;
+      color: var(--text);
+      background: #fff;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: -999px;
+      top: auto;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+    }
+    .skip-link:focus {
+      left: 1rem;
+      top: 1rem;
+      width: auto;
+      height: auto;
+      padding: .5rem .75rem;
+      background: #000;
+      color: #fff;
+      z-index: 9999;
+    }
+
+    .site-header { border-bottom: 1px solid rgba(0,0,0,0.04); }
+    .top-bar { max-width: var(--max-width); margin: 0 auto; padding: .75rem 1rem; display:flex; align-items:center; gap:1rem; }
+    .logo-img { display:block; }
+
+    /* Services hero / card */
+    .services-hero { max-width: var(--max-width); margin: 1.5rem auto; padding: 1rem; }
     .services-card {
-      background: rgba(255,255,255,0.92);
+      background: rgba(255,255,255,0.96);
       border-radius: 10px;
       padding: 1rem;
       box-shadow: 0 8px 24px rgba(0,0,0,0.04);
-      position: relative;
-      z-index: 2;
     }
 
-    /* Services grid: 3 columns on desktop, then 2, then 1 */
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1rem;
-      margin-top: 1rem;
-      align-items: start;
+    h1 { margin: 0 0 .25rem 0; font-family: "Playfair Display", serif; }
+
+    .service-note { margin-top: 1rem; color: var(--muted); font-size: .95rem; }
+
+    /* Services grid */
+    .services-grid { display:grid; grid-template-columns: repeat(3,1fr); gap:1rem; margin-top:1rem; align-items:start; }
+    .service-block { background: rgba(250,250,250,0.98); padding:.85rem; border-radius:8px; min-height:120px; }
+    .service-block h3 { margin:0 0 .5rem 0; font-family:"Playfair Display",serif; color:var(--brand); font-size:1.05rem; }
+    .service-list { margin:0; padding-left:1rem; color:var(--text); font-size:.98rem; line-height:1.45; }
+
+    /* ----------------------------
+       Title replacing the photo
+       Uses Tilt Neon (neon tilt) and neon glow per request
+       ---------------------------- */
+    .service-title {
+      font-family: 'Tilt Neon', cursive;
+      font-size: 115px;
+      line-height: 1;
+      text-align: center;
+      margin: 1.25rem 0 0 0;
+      display: block;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      -webkit-font-smoothing: antialiased;
+      /* small base shadow to keep letters readable on pure-white backgrounds */
+      text-shadow: 0 2px 6px rgba(0,0,0,0.04);
     }
 
-    /* Each service block visual */
-    .service-block {
-      background: rgba(250,250,250,0.98);
-      padding: .85rem;
-      border-radius: 8px;
-      min-height: 120px;
+    /* Requested colors and neon glow */
+    .service-title .injoy {
+      color: #FFF27A;
+      -webkit-text-stroke: 0.8px rgba(0,0,0,0.06);
+      text-shadow:
+        0 0 6px rgba(255,242,122,0.95),
+        0 0 12px rgba(255,242,122,0.72),
+        0 0 24px rgba(255,242,122,0.48),
+        0 6px 20px rgba(255,242,122,0.08);
     }
-
-    .service-block h3 {
-      margin: 0 0 .5rem 0;
-      font-family: "Playfair Display", serif;
-      color: var(--brand);
-      font-size: 1.05rem;
-    }
-
-    .service-list {
-      margin: 0;
-      padding-left: 1rem;
-      color: var(--text);
-      font-size: .98rem;
-      line-height: 1.45;
-    }
-
-    .service-note {
-      margin-top: 1.15rem;
-      color: var(--muted);
-      font-size: .95rem;
-    }
-
-   <!-- Replace the existing .service-title CSS and the title block with the code below. 
-     Make sure Tilt Neon is loaded in <head> (the repo already includes a Tilt+Neon link). -->
-
-<!-- CSS: neon glow using Tilt Neon -->
-<style>
-  /* Neon Tilt glow for Services title */
-  .service-title {
-    font-family: 'Tilt Neon', cursive;
-    font-size: 115px;
-    line-height: 1;
-    text-align: center;
-    margin: 1.25rem 0 0 0;
-    display: block;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    -webkit-font-smoothing: antialiased;
-    /* small fallback glow so the whole word reads on very light backgrounds */
-    text-shadow: 0 2px 6px rgba(0,0,0,0.04);
-  }
-
-  /* InJoy — warm yellow glow */
-  .service-title .injoy {
-    color: #FFF27A;
-    -webkit-text-stroke: 0.8px rgba(0,0,0,0.06); /* subtle crispness */
-    text-shadow:
-      0 0 6px rgba(255,242,122,0.95),
-      0 0 12px rgba(255,242,122,0.72),
-      0 0 24px rgba(255,242,122,0.48),
-      0 6px 20px rgba(255,242,122,0.08); /* soft falloff */
-  }
-
-  /* Beauty — slightly different yellow hue + glow */
-  .service-title .beauty {
-    color: #FCED86;
-    -webkit-text-stroke: 0.8px rgba(0,0,0,0.06);
-    text-shadow:
-      0 0 6px rgba(252,237,134,0.95),
-      0 0 14px rgba(252,237,134,0.70),
-      0 0 28px rgba(252,237,134,0.45),
-      0 6px 20px rgba(252,237,134,0.08);
-  }
-
-  /* Responsive scaling */
-  @media (max-width:1100px) {
-    .service-title { font-size: 80px; white-space: normal; }
-  }
-  @media (max-width:700px) {
-    .service-title { font-size: 48px; margin-top: .9rem; white-space: normal; }
-  }
-
-  /* Optional: reduce heavy blur on low-end devices */
-  @media (prefers-reduced-motion: reduce) {
-    .service-title .injoy,
     .service-title .beauty {
-      text-shadow: 0 0 6px rgba(0,0,0,0.03);
+      color: #FCED86;
+      -webkit-text-stroke: 0.8px rgba(0,0,0,0.06);
+      text-shadow:
+        0 0 6px rgba(252,237,134,0.95),
+        0 0 14px rgba(252,237,134,0.70),
+        0 0 28px rgba(252,237,134,0.45),
+        0 6px 20px rgba(252,237,134,0.08);
     }
-  }
-</style>
 
-<!-- HTML: title block (replace the former title element where the image was) -->
-<div class="service-title" aria-hidden="false" role="img" aria-label="InJoy Beauty">
-  <span class="injoy">InJoy</span> <span class="beauty">Beauty</span>
-</div>
-
-    /* Reduce size on narrower screens */
-    @media (max-width: 1100px) {
-      .services-grid { grid-template-columns: repeat(2, 1fr); }
-      .service-title { font-size: 80px; }
+    /* Responsive adjustments */
+    @media (max-width:1100px) {
+      .services-grid { grid-template-columns: repeat(2,1fr); }
+      .service-title { font-size: 80px; white-space: normal; }
     }
-    @media (max-width: 700px) {
+    @media (max-width:700px) {
       .services-grid { grid-template-columns: 1fr; }
       .services-card { padding: .9rem; }
-      .service-title { margin-top: .9rem; font-size: 48px; white-space: normal; }
+      .service-title { font-size: 48px; margin-top: .9rem; white-space: normal; }
+    }
+
+    /* prefers-reduced-motion: reduce heavy blur/shadow intensity */
+    @media (prefers-reduced-motion: reduce) {
+      .service-title .injoy,
+      .service-title .beauty {
+        text-shadow: 0 0 6px rgba(0,0,0,0.03);
+      }
     }
   </style>
 </head>
 <body>
-  <a class="skip-link" href="#main-content">Skip to main content <span class="skip-icon" aria-hidden="true">↘</span></a>
+  <a class="skip-link" href="#main-content">Skip to main content <span aria-hidden="true">↘</span></a>
 
   <header class="site-header" role="banner">
     <div class="top-bar">
@@ -160,10 +147,8 @@
         </a>
       </div>
 
-      <div class="header-divider" aria-hidden="true"></div>
-
-      <nav aria-label="Primary Navigation" class="primary-nav">
-        <ul>
+      <nav aria-label="Primary Navigation" class="primary-nav" style="margin-left:auto">
+        <ul style="list-style:none;display:flex;gap:1rem;margin:0;padding:0;align-items:center">
           <li><a href="index.html">Home</a></li>
           <li><a href="about.html">About</a></li>
           <li><a href="services.html" aria-current="page">Services</a></li>
@@ -174,7 +159,7 @@
       </nav>
     </div>
   </header>
-  
+
   <main id="main-content" class="site-main" role="main" tabindex="-1">
     <section class="services-hero" aria-labelledby="services-heading">
       <div class="services-card" role="region" aria-labelledby="services-heading">
@@ -221,7 +206,7 @@
           To request a booking or discuss accommodations, visit <a href="bookings.html">Bookings</a>.
         </p>
 
-        <!-- Replaced photo with a large, centered text logo -->
+        <!-- Replaced photo with neon Tilt title -->
         <div class="service-title" aria-hidden="false" role="img" aria-label="InJoy Beauty">
           <span class="injoy">InJoy</span> <span class="beauty">Beauty</span>
         </div>
@@ -230,40 +215,26 @@
     </section>
   </main>
 
-  <footer class="site-footer" role="contentinfo">
-    <div class="footer-inner">
-      <div class="footer-left social-links">
-        <p>Follow me</p>
-        <div class="footer-actions">
-          <a
-            class="social-btn social-btn--facebook"
-            href="https://www.facebook.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="InJoy Beauty on Facebook">
-            <img src="PSX_20251109_193743.png" alt="Facebook icon" class="social-icon">
+  <footer class="site-footer" role="contentinfo" style="border-top:1px solid rgba(0,0,0,0.04);margin-top:2rem">
+    <div style="max-width:var(--max-width);margin:0 auto;padding:1rem;display:flex;align-items:center;gap:1rem;flex-wrap:wrap">
+      <div style="flex:1">
+        <p style="margin:.25rem 0">Follow me</p>
+        <div style="display:flex;gap:.5rem;align-items:center">
+          <a class="social-btn" href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" aria-label="InJoy Beauty on Facebook">
+            <img src="PSX_20251109_193743.png" alt="Facebook icon" style="height:28px">
           </a>
-          <a
-            class="social-btn social-btn--instagram"
-            href="https://www.instagram.com/injoy_beautyy"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="InJoy Beauty on Instagram">
-            <img src="PSX_20251109_193650.png" alt="Instagram icon" class="social-icon">
+          <a class="social-btn" href="https://www.instagram.com/injoy_beautyy" target="_blank" rel="noopener noreferrer" aria-label="InJoy Beauty on Instagram">
+            <img src="PSX_20251109_193650.png" alt="Instagram icon" style="height:28px">
           </a>
         </div>
       </div>
 
-      <div class="footer-divider" aria-hidden="true"></div>
-
-      <div class="footer-right">
-        <img src="transparentlogo.png" alt="InJoy Beauty" class="footer-photo" width="75" height="72" />
-        <aside class="section-card aside-text" aria-label="InJoy Beauty mission">
-          <div class="footer-copy">
-            <h3>INJOY • Inclusive Beauty</h3>
-            <p>Everyone deserves to feel beautiful.</p>
-          </div>
-        </aside>
+      <div style="margin-left:auto;display:flex;gap:1rem;align-items:center">
+        <img src="transparentlogo.png" alt="InJoy Beauty" width="75" height="72" />
+        <div>
+          <h3 style="margin:.25rem 0">INJOY • Inclusive Beauty</h3>
+          <p style="margin:.25rem 0">Everyone deserves to feel beautiful.</p>
+        </div>
       </div>
     </div>
   </footer>
