@@ -72,24 +72,70 @@
       font-size: .95rem;
     }
 
-    /* Title replacing the photo */
-    /* Uses the requested Tilt Neon font; falls back to cursive */
-    .service-title {
-      font-family: 'Tilt Neon', cursive;
-      font-size: 115px;
-      line-height: 1;
-      text-align: center;
-      margin: 1.25rem 0 0 0;
-      display: block;
-      word-wrap: normal;
-      /* keep title visually centered inside the card */
-      width: 100%;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
+   <!-- Replace the existing .service-title CSS and the title block with the code below. 
+     Make sure Tilt Neon is loaded in <head> (the repo already includes a Tilt+Neon link). -->
+
+<!-- CSS: neon glow using Tilt Neon -->
+<style>
+  /* Neon Tilt glow for Services title */
+  .service-title {
+    font-family: 'Tilt Neon', cursive;
+    font-size: 115px;
+    line-height: 1;
+    text-align: center;
+    margin: 1.25rem 0 0 0;
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-font-smoothing: antialiased;
+    /* small fallback glow so the whole word reads on very light backgrounds */
+    text-shadow: 0 2px 6px rgba(0,0,0,0.04);
+  }
+
+  /* InJoy — warm yellow glow */
+  .service-title .injoy {
+    color: #FFF27A;
+    -webkit-text-stroke: 0.8px rgba(0,0,0,0.06); /* subtle crispness */
+    text-shadow:
+      0 0 6px rgba(255,242,122,0.95),
+      0 0 12px rgba(255,242,122,0.72),
+      0 0 24px rgba(255,242,122,0.48),
+      0 6px 20px rgba(255,242,122,0.08); /* soft falloff */
+  }
+
+  /* Beauty — slightly different yellow hue + glow */
+  .service-title .beauty {
+    color: #FCED86;
+    -webkit-text-stroke: 0.8px rgba(0,0,0,0.06);
+    text-shadow:
+      0 0 6px rgba(252,237,134,0.95),
+      0 0 14px rgba(252,237,134,0.70),
+      0 0 28px rgba(252,237,134,0.45),
+      0 6px 20px rgba(252,237,134,0.08);
+  }
+
+  /* Responsive scaling */
+  @media (max-width:1100px) {
+    .service-title { font-size: 80px; white-space: normal; }
+  }
+  @media (max-width:700px) {
+    .service-title { font-size: 48px; margin-top: .9rem; white-space: normal; }
+  }
+
+  /* Optional: reduce heavy blur on low-end devices */
+  @media (prefers-reduced-motion: reduce) {
+    .service-title .injoy,
+    .service-title .beauty {
+      text-shadow: 0 0 6px rgba(0,0,0,0.03);
     }
-    .service-title .injoy { color: #FFF27A; }
-    .service-title .beauty { color: #FCED86; }
+  }
+</style>
+
+<!-- HTML: title block (replace the former title element where the image was) -->
+<div class="service-title" aria-hidden="false" role="img" aria-label="InJoy Beauty">
+  <span class="injoy">InJoy</span> <span class="beauty">Beauty</span>
+</div>
 
     /* Reduce size on narrower screens */
     @media (max-width: 1100px) {
