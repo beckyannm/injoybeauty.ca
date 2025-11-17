@@ -511,7 +511,7 @@ button:focus-visible {
   font-family: var(--ui-font); 
   font-size: clamp(0.95rem, 1.8vw, 1.05rem); 
   line-height: 1.5; max-width: 56ch; 
-  text-align: center; 
+  text-align: justify; 
 }
 .home-intro .intro-text[style] { font-weight: 600; }
 
@@ -522,7 +522,7 @@ button:focus-visible {
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
   }
-  .home-intro { text-align: left; padding-left: .6rem; padding-right: .6rem; }
+  .home-intro { text-align: justify; padding-left: .6rem; padding-right: .6rem; }
   .welcome-title { font-size: clamp(1.8rem, 8vw, 2.6rem); } /* adjusted small-screen size */
   .intro-text { font-size: 0.98rem; max-width: 50ch; }
 }
