@@ -52,6 +52,8 @@ body{
   position: relative;
   background: transparent;
   z-index: 0;
+  padding-bottom: calc(var(--footer-height) + 0.25rem);
+}
 
   /* Allow main to grow and take available space so footer stays at bottom */
   flex: 1 0 auto;
