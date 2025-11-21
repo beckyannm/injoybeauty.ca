@@ -19,7 +19,8 @@
 
   --max-width: 1100px;
   --footer-max-width: 600px;
-  --footer-height: 120px;
+  --footer-height: 104px;
+  --footer-inner-padding-x: 0.75rem;
   --hero-max-width: 720px;
 }
 
@@ -57,8 +58,9 @@ body{
 
   /* Allow main to grow and take available space so footer stays at bottom */
   flex: 1 0 auto;
+
   /* Keep page content clear of the fixed footer on all viewports */
-  padding-bottom: calc(var(--footer-height) + 0.75rem);
+  padding-bottom: calc(var(--footer-height) + 0.5rem);
 }
 
 /* Ensure direct children sit above their overlay pseudo-element */
@@ -160,6 +162,11 @@ body{
   padding:0.2rem 1rem;
   gap:1rem;
 }
+.header-divider {
+  width: 1px;
+  height: 48px;
+  background: rgba(0,0,0,0.08);
+}
 
 /* Logo */
 .logo-img, .footer-photo{ display:block; max-width:100%; height:auto; object-fit:contain; }
@@ -207,6 +214,30 @@ body{
   color: var(--pill-active-text);
   box-shadow: 0 2px 10px rgba(0,0,0,0.06);
   transform: none;
+}
+/* Tidy header for phones */
+@media (max-width: 640px) {
+  .top-bar {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.65rem 0.85rem 0.85rem;
+    text-align: center;
+  }
+
+  .header-divider {
+    display: none;
+  }
+
+  .primary-nav ul {
+    justify-content: center;
+    gap: 0.35rem;
+  }
+
+  .primary-nav a {
+    font-size: 0.9rem;
+    padding: 0.35rem 0.7rem;
+  }
 }
 
 /* Focus visuals */
@@ -294,8 +325,8 @@ button:focus-visible {
 
 /* circular icon buttons */
 .social-btn {
-  width: 48px;
-  height: 48px;
+  width: 44px;
+  height: 44px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -364,7 +395,7 @@ button:focus-visible {
 
 /* logo sizing */
 .site-footer .footer-photo {
-  width: 72px;
+  width: 64px;
   height: auto;
   object-fit: contain;
   display: block;
@@ -374,12 +405,12 @@ button:focus-visible {
 /* brand title and tagline */
 .site-footer .brand-title {
   font-weight: 700;
-  font-size: 1.05rem;
+  font-size: 1rem;
   color: var(--text);
   letter-spacing: 0.4px;
 }
 .site-footer .brand-tag {
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   color: var(--text);
 }
 
@@ -398,12 +429,12 @@ button:focus-visible {
 
 /* reduce sizes slightly on very small screens but keep grid/side-by-side layout */
 @media (max-width: 480px) {
-  .social-btn { width: 44px; height: 44px; }
-  .site-footer .footer-photo { width: 64px; }
-  .follow-label { font-size: 0.98rem; }
-  .site-footer .brand-title { font-size: 1rem; }
-  .site-footer .brand-tag { font-size: 0.9rem; }
-  .site-footer .footer-divider { height: calc(var(--footer-height) - 22px); }
+  .social-btn { width: 40px; height: 40px; }
+  .site-footer .footer-photo { width: 56px; }
+  .follow-label { font-size: 0.95rem; }
+  .site-footer .brand-title { font-size: 0.95rem; }
+  .site-footer .brand-tag { font-size: 0.85rem; }
+  .site-footer .footer-divider { height: calc(var(--footer-height) - 24px); }
   .site-main { padding-bottom: calc(var(--footer-height) + 0.25rem); }
 }
 
