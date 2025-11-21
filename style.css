@@ -10,6 +10,7 @@
   --pill-hover-text: #202124;
   --focus: #F9FFE0;           /* light yellow focus outline */
   --brand: #6b2e6b;           /* primary brand purple */
+  --brand-hover: #5a2660;     /* darker brand purple for hover states */
   --accent: #f6c6e7;          /* soft light pink accent */
 
   /* Font variables (link to fonts must be in HTML <head>, not here) */
@@ -468,8 +469,8 @@ a:focus-visible, button:focus-visible {
 }
 .btn-primary:hover,
 .btn-primary:focus {
-  background: #5a2660;
-  border-color: #5a2660;
+  background: var(--brand-hover);
+  border-color: var(--brand-hover);
   transform: translateY(-2px);
   box-shadow: 0 8px 20px rgba(107, 46, 107, 0.25);
 }
