@@ -55,6 +55,8 @@ body{
 
   /* Allow main to grow and take available space so footer stays at bottom */
   flex: 1 0 auto;
+  /* Keep page content clear of the fixed footer on all viewports */
+  padding-bottom: calc(var(--footer-height) + 0.75rem);
 }
 
 /* Ensure direct children sit above their overlay pseudo-element */
